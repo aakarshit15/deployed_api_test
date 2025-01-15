@@ -2,6 +2,7 @@ from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from .yf_fetch import *
+from datetime import date
 
 @api_view(["GET"])
 def index(request):
@@ -55,33 +56,11 @@ def get_sector_and_industry(request, ticker):
     except Exception as e:
         return Response({"error": str(e)}, status=500)
 
-# @api_view(["GET"])
-# def get_calendar(request, ticker):
-#     try:
-#         final_json_file = get_calendar_as_json(ticker)
-#         return Response(final_json_file)
-#     except Exception as e:
-#         return Response({"error": str(e)}, status=500)
-
-
-from datetime import date
-
 class DateEncoder(json.JSONEncoder):
     def default(self, obj):
         if isinstance(obj, date):
             return obj.isoformat()
         return super().default(obj)
-
-# @api_view(["GET"])
-# def get_calendar(request, ticker):
-#     try:
-#         calendar_data = get_calendar_as_json(ticker)
-#         # Parse the JSON string to convert it to a Python object
-#         calendar_dict = json.loads(calendar_data)
-#         return Response(calendar_dict)
-#     except Exception as e:
-#         return Response({"error": str(e)}, status=500)
-
 
 @api_view(["GET"])
 def get_calendar(request, ticker):

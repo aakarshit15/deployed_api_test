@@ -43,18 +43,6 @@ def convert_to_json(data):
 
     return json.dumps(data, indent=4)
 
-# def convert_dates_to_strings(data):
-#     if isinstance(data, dict):
-#         return {key: convert_dates_to_strings(value) for key, value in data.items()}
-#     elif isinstance(data, list):
-#         return [convert_dates_to_strings(item) for item in data]
-#     elif isinstance(data, (datetime, pd.Timestamp)):
-#         return data.strftime("%Y-%m-%d %H:%M:%S")
-#     elif isinstance(data, datetime.date):
-#         return data.strftime("%Y-%m-%d")
-#     else:
-#         return data
-
 # Function to fetch balance sheet as JSON for single ticker
 def get_balance_sheet_as_json(ticker_symbol, **kwargs):
     try:
@@ -151,7 +139,6 @@ def get_sector_and_industry(tickers, **kwargs):
         return data.strftime("%Y-%m-%d")
     return data
 
-
 # In your yf_fetch.py
 def get_calendar_as_json(ticker_symbol):
     try:
@@ -174,7 +161,6 @@ def get_calendar_as_json(ticker_symbol):
 
     except Exception as e:
         return json.dumps({"error": str(e)}, indent=4)
-    
 
 def convert_timestamps_to_strings(data):
     if isinstance(data, dict):
@@ -189,7 +175,6 @@ def convert_timestamps_to_strings(data):
         return data.to_dict()
     else:
         return data
-
 
 # Example usage
 if __name__ == "__main__":
@@ -224,5 +209,3 @@ if __name__ == "__main__":
     # # Calendar information for single ticker
     # print("\nCalendar Information for Single Ticker:")
     # print(get_calendar_as_json(single_ticker))
-
-
