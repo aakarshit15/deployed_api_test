@@ -64,6 +64,12 @@ def get_cal_as_json(ticker_symbol, **kwargs):
         return json.dumps({"error": "No calendar data available"})
     return json.loads(json.dumps(cal, cls=DateEncoder))
 
+def get_news_as_json(ticker_symbol):
+    news = yf.Ticker(ticker_symbol).news
+    if news is None:
+        return json.dumps({"error": "No calendar data available"})
+    return json.loads(json.dumps(news, cls=DateEncoder))
+
 # Example usage
 if __name__ == "__main__":
 
