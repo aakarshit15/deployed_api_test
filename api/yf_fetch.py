@@ -70,6 +70,17 @@ def get_news_as_json(ticker_symbol):
         return json.dumps({"error": "No calendar data available"})
     return json.loads(json.dumps(news, cls=DateEncoder))
 
+def get_company_profile(ticker_symbol):
+    """
+    Fetch and display the profile of a company, including its basic details.
+    
+    Parameters:
+        ticker_symbol (str): The ticker symbol of the company.
+    """
+    ticker = yf.Ticker(ticker_symbol)
+    info = ticker.info  # Fetch metadata and profile details
+    return info
+
 # Example usage
 if __name__ == "__main__":
 

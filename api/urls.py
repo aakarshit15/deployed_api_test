@@ -33,4 +33,9 @@ urlpatterns = [
         views.get_news,
         name="get-news"
     ),
+    path(
+        'get_profile/<str:ticker>/',
+        views.get_profile,
+        name="get-profile"
+    ),
 ]

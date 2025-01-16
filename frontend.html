@@ -76,6 +76,17 @@
             }
         }
 
+        async function fetchProfile(ticker) {
+            try {
+                const response = await fetch(`http://127.0.0.1:8000/api/get_profile/${ticker}/`);
+                const data = await response.json();
+                console.log("News Data: ", data);
+                document.getElementById("profile").textContent = JSON.stringify(data, null, 2);
+            } catch (error) {
+                console.error('Error fetching profile:', error);
+            }
+        }
+
         // Call the functions on page load
         window.onload = () => {
             const ticker = "RELIANCE.NS";  // Change this to the desired ticker
@@ -85,6 +96,7 @@
             fetchSectorAndIndustry(ticker);
             fetchCalendar(ticker);
             fetchNews(ticker);
+            fetchProfile(ticker);
         };
     </script>
 </head>
@@ -108,5 +120,8 @@
     
     <h2>News:</h2>
     <pre id="calendar">Loading news data...</pre>
+
+    <h2>Profile:</h2>
+    <pre id="calendar">Loading profile data...</pre>
 </body>
 </html>
