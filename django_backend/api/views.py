@@ -27,7 +27,7 @@ def get_historical_data(request, ticker):
     try:
         period = request.query_params.get("period", "1mo")    # Default to '1mo'
         interval = request.query_params.get("interval", "1d") # Default to '1d'
-        return Response(get_historical_data_as_json(ticker=ticker, period=period, interval=interval))
+        return Response(get_historical_data_as_json(ticker_symbol=ticker, period=period, interval=interval))
     except Exception as e:
         return Response({"error": str(e)}, status=500)
 
