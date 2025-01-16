@@ -64,6 +64,17 @@
                 console.error('Error fetching calendar:', error);
             }
         }
+        
+        async function fetchNews(ticker) {
+            try {
+                const response = await fetch(`http://127.0.0.1:8000/api/get_calendar/${ticker}/`);
+                const data = await response.json();
+                console.log("News Data: ", data);
+                document.getElementById("news").textContent = JSON.stringify(data, null, 2);
+            } catch (error) {
+                console.error('Error fetching news:', error);
+            }
+        }
 
         // Call the functions on page load
         window.onload = () => {
@@ -73,6 +84,7 @@
             fetchHistoricalData(ticker);
             fetchSectorAndIndustry(ticker);
             fetchCalendar(ticker);
+            fetchNews(ticker);
         };
     </script>
 </head>
@@ -93,5 +105,8 @@
 
     <h2>Calendar:</h2>
     <pre id="calendar">Loading calendar data...</pre>
+    
+    <h2>News:</h2>
+    <pre id="calendar">Loading news data...</pre>
 </body>
 </html>

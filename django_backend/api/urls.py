@@ -28,4 +28,9 @@ urlpatterns = [
         views.get_calendar,
         name="get-calendar"
     ),
+    path(
+        'get_news/<str:ticker>/',
+        views.get_news,
+        name="get-news"
+    ),
 ]

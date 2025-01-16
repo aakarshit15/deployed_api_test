@@ -16,7 +16,7 @@ class DateEncoder(json.JSONEncoder):
 
 # Main Functions
 
-def get_balance_sheet_as_json(ticker_symbol, **kwargs):
+def get_balance_sheet_as_json(ticker_symbol):
     bs = yf.Ticker(ticker_symbol).balance_sheet
     bs_json_cleaned = {
         str(key): {
@@ -69,7 +69,7 @@ if __name__ == "__main__":
 
     single_ticker = "AAPL"
 
-    # # Balance sheet for a single ticker
+    # Balance sheet for a single ticker
     # print("Balance Sheet for Single Ticker:")
     # print(get_balance_sheet_as_json(single_ticker))
 
