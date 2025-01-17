@@ -75,7 +75,7 @@
                 console.error('Error fetching news:', error);
             }
         }
-
+        
         async function fetchProfile(ticker) {
             try {
                 const response = await fetch(`http://127.0.0.1:8000/api/get_profile/${ticker}/`);
@@ -120,8 +120,8 @@
     
     <h2>News:</h2>
     <pre id="news">Loading news data...</pre>
-
-    <h2>Profile:</h2>
+    
+    <h2>News:</h2>
     <pre id="profile">Loading profile data...</pre>
 </body>
 </html>

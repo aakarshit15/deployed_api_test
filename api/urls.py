@@ -38,4 +38,19 @@ urlpatterns = [
         views.get_profile,
         name="get-profile"
     ),
+    path(
+        'get_analysis_data/<str:ticker>/',
+        views.get_analysis_data,
+        name="get-analysis-data"
+    ),
+    path(
+        'get_stock_stats/<str:ticker>/<int:quarters>/',
+        views.get_stock_statistics,
+        name="get-stock-statistics"
+    ),
+    path(
+        'get_income_statement/<str:ticker>/',
+        views.get_income_statement,
+        name="get-income-statement"
+    ),
 ]
